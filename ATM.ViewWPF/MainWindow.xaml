@@ -8,11 +8,13 @@
     
     <Window.Resources>
         <Style x:Key="LeftAndRightSide">
-            <Setter Property="Control.Background" Value="AliceBlue"/>
+            <Setter Property="Control.Background" Value="MediumSeaGreen"/>
         </Style>
-        <Style x:Key="CommandButtons">
-            <Setter Property="Control.Margin" Value="0, 48, 0, 0"/>
-            <Setter Property="Control.Height" Value="40"/>
+        <Style x:Key="BackButton" TargetType="Button">
+            <Setter Property="Control.Background" Value="#373737"/>
+            <Setter Property="Control.Foreground" Value="White"/>
+            <Setter Property="Control.FontFamily" Value="Verdana"/>
+            <Setter Property="Button.FontSize" Value="16"/>
         </Style>
     </Window.Resources>
 
@@ -26,7 +28,14 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="120"/>
             </Grid.ColumnDefinitions>
+
+            <Image Source="Assets/ATMLogo.png" Grid.Column="0"/>
+
+            <TextBlock Text="{Binding Balance}" VerticalAlignment="Center" 
+                       FontFamily="Verdana" FontSize="18" TextAlignment="Center"
+                       Grid.Column="1" TextWrapping="Wrap"/>
         </Grid>
 
         <Grid Grid.Row="1">
@@ -37,19 +46,13 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0" Orientation="Vertical" Style="{StaticResource LeftAndRightSide}">
-                <Button Content="Button1" Style="{StaticResource CommandButtons}" Command="{Binding CommandButtons.Button1}"/>
-                <Button Content="Button1" Style="{StaticResource CommandButtons}" x:Name="Button2"/>
-                <Button Content="Button1" Style="{StaticResource CommandButtons}" x:Name="Button3"/>
-                <Button Content="Button1" Style="{StaticResource CommandButtons}" x:Name="Button4"/>
+                <Button Content="Назад" Margin="0, 50, 0, 0" Height="35" Style="{StaticResource BackButton}" Click="BackButtonPressed"/>
             </StackPanel>
 
-            <Frame x:Name="CenterFrame" Grid.Column="1" Source="Pages/DispensePage.xaml"/>
+            <Frame x:Name="CenterFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
 
             <StackPanel Grid.Column="2" Orientation="Vertical" Style="{StaticResource LeftAndRightSide}">
-                <Button Content="Button1" Style="{StaticResource CommandButtons}" x:Name="Button5"/>
-                <Button Content="Button1" Style="{StaticResource CommandButtons}" x:Name="Button6"/>
-                <Button Content="Button1" Style="{StaticResource CommandButtons}" x:Name="Button7"/>
-                <Button Content="Button1" Style="{StaticResource CommandButtons}" x:Name="Button8"/>
+
             </StackPanel>
         </Grid>
     </Grid>

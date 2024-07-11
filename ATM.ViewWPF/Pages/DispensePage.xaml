@@ -11,6 +11,12 @@
     <Page.Resources>
         <Style x:Key="NumButton">
             <Setter Property="Control.FontFamily" Value="Verdana"/>
+            <Setter Property="Button.Background" Value="#373737"/>
+            <Setter Property="Button.Foreground" Value="White"/>
+            <Setter Property="Button.FontSize" Value="18"/>
+        </Style>
+        <Style x:Key="DispenseButton">
+            <Setter Property="Control.FontFamily" Value="Verdana"/>
             <Setter Property="Button.Background" Value="MediumSeaGreen"/>
             <Setter Property="Button.FontSize" Value="18"/>
         </Style>
@@ -28,8 +34,8 @@
                            Text="0" Width="230" FontFamily="Verdana" 
                            FontSize="18" TextAlignment="Right" 
                            VerticalAlignment="Center" Margin="5,0,5,0"/>
-                <Button Content="⌫" FontSize="20" Width="60" Background="AliceBlue" 
-                        BorderThickness="3" BorderBrush="Red" Click="NumButtonClick"/>
+                <Button Content="⌫" FontSize="22" Width="60" Background="AliceBlue" 
+                        BorderThickness="4" BorderBrush="MediumSeaGreen" Click="NumButtonClick"/>
             </StackPanel>
 
             <Grid Grid.Row="1" Margin="20">
@@ -54,8 +60,11 @@
                 <Button Content="7" Grid.Row="2" Grid.Column="0" Style="{StaticResource NumButton}" Click="NumButtonClick"/>
                 <Button Content="8" Grid.Row="2" Grid.Column="1" Style="{StaticResource NumButton}" Click="NumButtonClick"/>
                 <Button Content="9" Grid.Row="2" Grid.Column="2" Style="{StaticResource NumButton}" Click="NumButtonClick"/>
-                <Button Content="0" Grid.Row="3" Grid.Column="1" Style="{StaticResource NumButton}" Click="NumButtonClick"/>
-
+                <Button Content="0" Grid.Row="3" Grid.Column="0" Style="{StaticResource NumButton}" Click="NumButtonClick"/>
+                <Button 
+                    Content="Снять" Grid.Row="3" Grid.Column="1" 
+                    Grid.ColumnSpan="2" Style="{StaticResource DispenseButton}"
+                    Click="DispenseButtonClick"/>
             </Grid>
         </Grid>
     </Grid>

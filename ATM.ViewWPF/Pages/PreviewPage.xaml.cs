@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
 
 namespace ATM.ViewWPF.Pages
 {
@@ -20,9 +7,23 @@ namespace ATM.ViewWPF.Pages
     /// </summary>
     public partial class PreviewPage : Page
     {
-        public PreviewPage()
+        private readonly object parentDataContext;
+        public PreviewPage(object parentDataContext)
         {
             InitializeComponent();
+            this.parentDataContext = parentDataContext;
+        }
+
+        private void NavigateToDispensePage(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var dispensePage = new DispensePage(parentDataContext);
+            this.NavigationService.Navigate(dispensePage);
+        }
+
+        private void NavigateToDepositPage(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var depositCashPage = new DepositCashPage(parentDataContext);
+            this.NavigationService.Navigate(depositCashPage);
         }
     }
 }

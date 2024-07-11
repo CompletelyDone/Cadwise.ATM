@@ -49,14 +49,18 @@
 
             var sortedNominals = GetSortedNominals(false);
             int maxNominalIndex = 0;
-            while (ostatok != 0)
+            while (ostatok != 0 && sortedNominals.Count > maxNominalIndex)
             {
                 if (sortedNominals[maxNominalIndex] > ostatok)
                 {
                     maxNominalIndex++;
                     continue;
                 }
-                if (storage[sortedNominals[maxNominalIndex]].Count == 0) maxNominalIndex++;
+                if (storage[sortedNominals[maxNominalIndex]].Count == 0)
+                {
+                    maxNominalIndex++;
+                    continue;
+                }
                 Banknote banknote = storage[sortedNominals[maxNominalIndex]][0];
                 storage[sortedNominals[maxNominalIndex]].RemoveAt(0);
                 dispensedBanknotes.Add(banknote);
