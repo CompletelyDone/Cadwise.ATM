@@ -41,28 +41,30 @@
             storage[denomination].RemoveAt(0);
             return banknote;
         }
-        public List<Banknote> DispenseBanknotes(int sum, bool withExchange)
+        public List<Banknote> DispenseBanknotes(int sum)
         {
-            int totalSum = 0;
-            List<Banknote> dispensedBanknotes = new();
             if (sum > GetBalance()) return [];
+            int ostatok = sum;
+            List<Banknote> dispensedBanknotes = new();
 
-            if (withExchange)
+            var sortedNominals = GetSortedNominals(false);
+            int maxNominalIndex = 0;
+            while (ostatok != 0)
             {
-                var sortedNominals = GetSortedNominals(true);
-                int minNominalIndex = 0;
-                while (totalSum < sum)
+                if (sortedNominals[maxNominalIndex] > ostatok)
                 {
-                    if (storage[sortedNominals[minNominalIndex]].Count == 0) minNominalIndex++;
-                    Banknote banknote = storage[sortedNominals[minNominalIndex]][0];
-                    storage[sortedNominals[minNominalIndex]].RemoveAt(0);
-                    dispensedBanknotes.Add(banknote);
-                    totalSum += banknote.Denomination;
+                    maxNominalIndex++;
+                    continue;
                 }
+                if (storage[sortedNominals[maxNominalIndex]].Count == 0) maxNominalIndex++;
+                Banknote banknote = storage[sortedNominals[maxNominalIndex]][0];
+                storage[sortedNominals[maxNominalIndex]].RemoveAt(0);
+                dispensedBanknotes.Add(banknote);
+                ostatok -= banknote.Denomination;
             }
 
             return dispensedBanknotes;
-        }
+        } //Жадный алгоритм
         private List<int> GetSortedNominals(bool ascending)
         {
             List<int> sortedList = new();

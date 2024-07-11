@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ATM.ViewWPF
+namespace ATM.ViewWPF.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ATM.xaml
+    /// Логика взаимодействия для PreviewPage.xaml
     /// </summary>
-    public partial class ATM : Window
+    public partial class PreviewPage : Page
     {
-        public ATM()
+        public PreviewPage()
         {
             InitializeComponent();
         }
